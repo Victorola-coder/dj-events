@@ -1,9 +1,32 @@
-import Layout from '../../components/Layout';
+import Layout from "@/components/Layout";
+import EventItems from "@/components/evenItems";
+import { API_URL } from "@/config/index";
+import Link from "next/link";
 
-export default function Event() {
+export default function Events({ events }) {
+  // console.log(events);
   return (
-    <Layout>
-      <h1>Events</h1>
-    </Layout>
+    <>
+      <Layout>
+        <h1>Upcoming Events</h1>
+
+        {events.length === 1 && <h3>No events yet</h3>}
+
+        {events.map((evt) => (
+          <EventItems evt={evt} key={evt.id} />
+        ))}
+      </Layout>
+    </>
   );
+}
+
+export async function getStaticProps() {
+  const res = await fetch(`${API_URL}/api/events`);
+  const events = await res.json();
+  console.log(events);
+
+  return {
+    props: { events },
+    revalidate: 1,
+  };
 }

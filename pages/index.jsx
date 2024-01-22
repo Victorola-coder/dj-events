@@ -1,5 +1,7 @@
 import Layout from "@/components/Layout";
+import EventItems from "@/components/evenItems";
 import { API_URL } from "@/config/index";
+import Link from "next/link";
 
 export default function Home({ events }) {
   // console.log(events);
@@ -11,8 +13,14 @@ export default function Home({ events }) {
         {events.length === 1 && <h3>No events yet</h3>}
 
         {events.map((evt) => (
-          <h4 key={evt.id}>{evt.name}</h4>
+          <EventItems evt={evt} key={evt.id} />
         ))}
+
+        {events.length > 0 && (
+          <Link href="/events">
+            <button className="btn-secondary">See more</button>
+          </Link>
+        )}
       </Layout>
     </>
   );
@@ -24,7 +32,7 @@ export async function getStaticProps() {
   console.log(events);
 
   return {
-    props: { events },
+    props: { events: events.splice(0, 3) },
     revalidate: 1,
   };
 }
