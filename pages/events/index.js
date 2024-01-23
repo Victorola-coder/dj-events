@@ -7,7 +7,7 @@ export default function Events({ events }) {
   return (
     <>
       <Layout>
-        <h1>Upcoming Events</h1>
+        <h1>Events</h1>
 
         {events.length == 0 && <h3>No events yet</h3>}
 
