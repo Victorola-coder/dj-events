@@ -21,8 +21,8 @@ export default function EventItems({ evt }) {
       </div>
 
       <div className={styles.link}>
-        <Link href={`/events/${evt.slug}`}>
-          <span className="btn">Details</span>
+        <Link legacyBehavior href={`/events/${evt.slug}`}>
+          <a className="btn">Details</a>
         </Link>
       </div>
     </div>

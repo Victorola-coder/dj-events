@@ -12,7 +12,7 @@
 //   }
 // };
 
-const { events } = require("../events/data.json");
+const { events } = require("./data.json");
 
 export default (req, res) => {
   if (req.method === "GET") {
