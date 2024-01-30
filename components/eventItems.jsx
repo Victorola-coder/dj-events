@@ -10,6 +10,7 @@ export default function EventItems({ evt }) {
           src={evt.image ? evt.image : "/images/event-default.png"}
           width={170}
           height={100}
+          alt={evt.name}
           loading="lazy"
           draggable={false}
         />
